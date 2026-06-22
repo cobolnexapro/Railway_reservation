@@ -1,0 +1,26 @@
+     A* ========================================================
+     A* BOOKPF - BOOKING / RESERVATION LEDGER PHYSICAL FILE
+     A* INDIAN RAILWAY RESERVATION SYSTEM (CASE STUDY)
+     A* KEY  : PNRNO (PNR NUMBER) - UNIQUE
+     A* ========================================================
+     A          R BOOKREC                   TEXT('BOOKING LEDGER RECORD')
+     A            PNRNO         10S 0       COLHDG('PNR' 'NUMBER')
+     A            TRNNO          5S 0       COLHDG('TRAIN' 'NUMBER')
+     A            JRNDAT         8S 0       COLHDG('JOURNEY' 'DATE')
+     A            BOOKDT         8S 0       COLHDG('BOOKING' 'DATE')
+     A            BOOKTM         6S 0       COLHDG('BOOKING' 'TIME')
+     A            USRID         10A         COLHDG('USER' 'ID')
+     A            PSGNAM        30A         COLHDG('PASSENGER' 'NAME')
+     A            PSGAGE         3S 0       COLHDG('PASSENGER' 'AGE')
+     A            PSGSEX         1A         COLHDG('PASSENGER' 'SEX')
+     A            QUOTA          2A         COLHDG('QUOTA' 'CODE')
+     A            BERTHTY        2A         COLHDG('BERTH' 'TYPE')
+     A            BERTHNO        3S 0       COLHDG('BERTH' 'NUMBER')
+     A            FARAMT         7P 2       COLHDG('FARE' 'AMOUNT')
+     A            BOOKSTS        1A         COLHDG('BOOKING' 'STATUS')
+     A            CANDT          8S 0       COLHDG('CANCEL' 'DATE')
+     A            CANTM          6S 0       COLHDG('CANCEL' 'TIME')
+     A            REFAMT         7P 2       COLHDG('REFUND' 'AMOUNT')
+     A            TXNNO         12A         COLHDG('PAYMENT' 'TXN NO')
+     A                                      UNIQUE
+     A          K PNRNO

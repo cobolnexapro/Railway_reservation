@@ -1,0 +1,350 @@
+     A* ========================================================
+     A* RAILDSPF - INDIAN RAILWAY RESERVATION SYSTEM
+     A* DISPLAY FILE - ALL SCREEN FORMATS
+     A* ========================================================
+     A                                       DSPSIZ(24 80 *DS3)
+     A                                       INDARA
+     A                                       PRINT
+     A
+     A* --------------------------------------------------------
+     A* SIGN ON / LOGIN SCREEN
+     A* --------------------------------------------------------
+     A          R SGNFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF06(06)
+     A                                  1 23 'INDIAN RAILWAY RESERVATION SYSTEM' DSPATR(HI)
+     A                                  2 28 'U S E R   S I G N - O N' DSPATR(UL)
+     A                                  5 10 'User ID  . . . . . . . :'
+     A            SGUSRID       10A  B  5 36 CHECK(MF)
+     A                                  7 10 'Password . . . . . . . :'
+     A            SGUSRPWD      10A  B  7 36 CHECK(MF) DSPATR(ND)
+     A            SGMSG1        60A  O 10 10 DSPATR(HI)
+     A                                 22  2 '------------------------------------------------------------------------------'
+     A                                 23 10 'F3=Exit   F6=New User Registration   ENTER=Sign On'
+     A
+     A* --------------------------------------------------------
+     A* NEW USER REGISTRATION SCREEN
+     A* --------------------------------------------------------
+     A          R REGFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 28 'NEW USER REGISTRATION' DSPATR(HI)
+     A                                  3 10 'User ID  . . . . . . . :'
+     A            RGUSRID       10A  B  3 36 CHECK(MF)
+     A                                  4 10 'Password . . . . . . . :'
+     A            RGUSRPWD      10A  B  4 36 CHECK(MF) DSPATR(ND)
+     A                                  5 10 'Full Name  . . . . . . :'
+     A            RGUSRNAM      30A  B  5 36 CHECK(MF)
+     A                                  6 10 'Age  . . . . . . . . . :'
+     A            RGUSRAGE       3S 0B  6 36 CHECK(MF) RANGE(1 120) ERRMSG('AGE MUST BE BETWEEN 1 AND 120' 50)
+     A                                  7 10 'Sex (M/F/O)  . . . . . :'
+     A            RGUSRSEX       1A  B  7 36 CHECK(MF) VALUES('M' 'F' 'O') ERRMSG('SEX MUST BE M, F OR O' 51)
+     A                                  8 10 'Email Address  . . . . :'
+     A            RGUSREML      40A  B  8 36
+     A                                  9 10 'Phone Number . . . . . :'
+     A            RGUSRPHN      12A  B  9 36 CHECK(MF)
+     A                                 10 10 'Address  . . . . . . . :'
+     A            RGUSRADR      60A  B 11 10
+     A            RGMSG1        60A  O 13 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Save   F12=Cancel'
+     A
+     A* --------------------------------------------------------
+     A* PROFILE MANAGEMENT SCREEN
+     A* --------------------------------------------------------
+     A          R PROFFMT                    CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 30 'PROFILE MANAGEMENT' DSPATR(HI)
+     A                                  3 10 'User ID  . . . . . . . :'
+     A            PRUSRID       10A  O  3 36
+     A                                  4 10 'New Password(blank=same):'
+     A            PRUSRPWD      10A  B  4 38 DSPATR(ND)
+     A                                  5 10 'Full Name  . . . . . . :'
+     A            PRUSRNAM      30A  B  5 36 CHECK(MF)
+     A                                  6 10 'Age  . . . . . . . . . :'
+     A            PRUSRAGE       3S 0B  6 36 CHECK(MF) RANGE(1 120)
+     A                                  7 10 'Sex (M/F/O)  . . . . . :'
+     A            PRUSRSEX       1A  B  7 36 CHECK(MF) VALUES('M' 'F' 'O')
+     A                                  8 10 'Email Address  . . . . :'
+     A            PRUSREML      40A  B  8 36
+     A                                  9 10 'Phone Number . . . . . :'
+     A            PRUSRPHN      12A  B  9 36 CHECK(MF)
+     A                                 10 10 'Address  . . . . . . . :'
+     A            PRUSRADR      60A  B 11 10
+     A            PRMSG1        60A  O 13 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Save Changes   F12=Back to Menu'
+     A
+     A* --------------------------------------------------------
+     A* MAIN MENU SCREEN
+     A* --------------------------------------------------------
+     A          R MENFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                  1 23 'INDIAN RAILWAY RESERVATION SYSTEM' DSPATR(HI)
+     A                                  2 31 'M A I N   M E N U' DSPATR(UL)
+     A                                  4 10 'Welcome,'
+     A            MNUSRNAM      30A  O  4 19
+     A                                  6 14 '1.  Search Trains / Check Availability / Fare Enquiry'
+     A                                  7 14 '2.  Book Ticket'
+     A                                  8 14 '3.  PNR Status Enquiry'
+     A                                  9 14 '4.  Cancel Ticket'
+     A                                 10 14 '5.  Profile Management'
+     A                                 11 14 '6.  Admin Menu (Train / Fare / Quota / Reports)'
+     A                                 13 10 'Select Option  . . . . :'
+     A            MNOPTION       1S 0B 13 36 CHECK(MF) RANGE(1 6) ERRMSG('ENTER A VALID OPTION NUMBER' 50)
+     A            MNMSG1        60A  O 15 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit / Log Off          ENTER=Continue'
+     A
+     A* --------------------------------------------------------
+     A* TRAIN SEARCH / FARE & SCHEDULE ENQUIRY - CRITERIA SCREEN
+     A* --------------------------------------------------------
+     A          R SRHFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 20 'SEARCH TRAINS / FARE & SCHEDULE ENQUIRY' DSPATR(HI)
+     A                                  3 10 'Train No (blank if unknown) . . :'
+     A            SRTRNNO        5S 0B  3 46 EDTCDE(Z)
+     A                                  5 10 '----------------- OR search by route -----------------'
+     A                                  6 10 'Source Station Code . . . . . . :'
+     A            SRSRCCOD       4A  B  6 46
+     A                                  7 10 'Destination Station Code  . . . :'
+     A            SRDSTCOD       4A  B  7 46
+     A                                  8 10 'Journey Date (CCYYMMDD)  . . . . :'
+     A            SRJRNDAT       8S 0B  8 46 CHECK(MF) ERRMSG('ENTER JOURNEY DATE AS CCYYMMDD' 50)
+     A            SRMSG1        60A  O 11 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Search   F12=Back to Menu'
+     A
+     A* --------------------------------------------------------
+     A* TRAIN SEARCH RESULT / AVAILABILITY / FARE / SCHEDULE
+     A* --------------------------------------------------------
+     A          R SRLFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF07(07)
+     A                                       CF08(08)
+     A                                       CF10(10)
+     A                                  1 30 'TRAIN SEARCH RESULT' DSPATR(HI)
+     A                                  2 10 'Result'
+     A            SLIDX          3S 0O  2 18 EDTCDE(Z)
+     A                                  2 23 'of'
+     A            SLTOT          3S 0O  2 27 EDTCDE(Z)
+     A                                  2 31 'matching train(s)'
+     A                                  4 10 'Train Number . . . . :'
+     A            SLTRNNO        5S 0O  4 36 EDTCDE(Z)
+     A                                  5 10 'Train Name . . . . . :'
+     A            SLTRNAM       30A  O  5 36
+     A                                  6 10 'Source Station . . . :'
+     A            SLSRCST       20A  O  6 36
+     A                                  7 10 'Destination Station  :'
+     A            SLDSTST       20A  O  7 36
+     A                                  8 10 'Departure Time(HHMM) :'
+     A            SLDEPTM        4S 0O  8 36
+     A                                  9 10 'Arrival Time (HHMM)  :'
+     A            SLARRTM        4S 0O  9 36
+     A                                 10 10 'Total Seats  . . . . :'
+     A            SLTOTST        4S 0O 10 36 EDTCDE(Z)
+     A                                 11 10 'Available Seats  . . :'
+     A            SLAVLST        4S 0O 11 36 EDTCDE(Z)
+     A                                 12 10 '  General / Ladies / Sr.Citizen Quota Avail. :'
+     A            SLGENST        4S 0O 12 58 EDTCDE(Z)
+     A            SLLADST        4S 0O 12 63 EDTCDE(Z)
+     A            SLSCTST        4S 0O 12 68 EDTCDE(Z)
+     A                                 13 10 'Base Fare  . . . . . :'
+     A            SLFARE         7P 2O 13 36 EDTCDE(1)
+     A                                 16 10 'Enter Train No to Book  . . . . . :'
+     A            SLBKTRN        5S 0B 16 46 EDTCDE(Z)
+     A            SLMSG1        60A  O 18 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit  F7=Previous  F8=Next  F10=Book  F12=Back'
+     A
+     A* --------------------------------------------------------
+     A* TICKET BOOKING - PASSENGER DETAIL ENTRY
+     A* --------------------------------------------------------
+     A          R BOKFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 22 'TICKET BOOKING - PASSENGER DETAILS' DSPATR(HI)
+     A                                  3 10 'Train No / Name  . . :'
+     A            BKTRNNO        5S 0O  3 36 EDTCDE(Z)
+     A            BKTRNAM       25A  O  3 44
+     A                                  4 10 'Route  . . . . . . . :'
+     A            BKSRCST       16A  O  4 36
+     A                                  4 53 'TO'
+     A            BKDSTST       16A  O  4 56
+     A                                  5 10 'Departure / Arrival  :'
+     A            BKDEPTM        4S 0O  5 36
+     A                                  5 41 '/'
+     A            BKARRTM        4S 0O  5 43
+     A                                  6 10 'Seats Available  . . :'
+     A            BKAVLST        4S 0O  6 36 EDTCDE(Z)
+     A                                  7 10 'Fare (Base)  . . . . :'
+     A            BKFARE         7P 2O  7 36 EDTCDE(1)
+     A                                  9 10 'Passenger Name . . . :'
+     A            BKPSGNAM      30A  B  9 36 CHECK(MF)
+     A                                 10 10 'Age  . . . . . . . . :'
+     A            BKPSGAGE       3S 0B 10 36 CHECK(MF) RANGE(1 120) ERRMSG('AGE MUST BE BETWEEN 1 AND 120' 50)
+     A                                 11 10 'Sex (M/F/O)  . . . . :'
+     A            BKPSGSEX       1A  B 11 36 CHECK(MF) VALUES('M' 'F' 'O') ERRMSG('SEX MUST BE M, F OR O' 51)
+     A                                 12 10 'Quota(GN/LD/SC/TQ) . :'
+     A            BKQUOTA        2A  B 12 36 CHECK(MF) VALUES('GN' 'LD' 'SC' 'TQ') ERRMSG('QUOTA MUST BE GN, LD, SC OR TQ' 52)
+     A                                 13 10 'Berth Pref(LB/UB/SL/SU/RA):'
+     A            BKBRTHTY       2A  B 13 39 CHECK(MF) VALUES('LB' 'UB' 'SL' 'SU' 'RA') ERRMSG('INVALID BERTH TYPE' 53)
+     A                                 14 10 'Journey Date (CCYYMMDD)  :'
+     A            BKJRNDAT       8S 0B 14 39 CHECK(MF) ERRMSG('ENTER JOURNEY DATE AS CCYYMMDD' 50)
+     A            BKMSG1        60A  O 16 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Proceed to Payment   F12=Back'
+     A
+     A* --------------------------------------------------------
+     A* FARE CONFIRMATION & PAYMENT SCREEN
+     A* --------------------------------------------------------
+     A          R CNFFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 24 'FARE CONFIRMATION & PAYMENT' DSPATR(HI)
+     A                                  3 10 'Train  . . . . . . . :'
+     A            CNTRNAM       30A  O  3 36
+     A                                  4 10 'Passenger  . . . . . :'
+     A            CNPSGNAM      30A  O  4 36
+     A                                  5 10 'Quota / Berth Type . :'
+     A            CNQUOTA        2A  O  5 36
+     A            CNBRTHTY       2A  O  5 40
+     A                                  6 10 'Fare Payable . . . . :'
+     A            CNFARAMT       7P 2O  6 36 EDTCDE(1)
+     A                                  7 10 'PNR Number . . . . . :'
+     A            CNPNRNO       10S 0O  7 36 EDTCDE(Z)
+     A                                  9 10 'Payment Mode(CC/DC/NB/UP/WL):'
+     A            CNPAYMOD       2A  B  9 41 CHECK(MF) VALUES('CC' 'DC' 'NB' 'UP' 'WL') ERRMSG('INVALID PAYMENT MODE' 54)
+     A                                 10 10 'Card / UPI / Ref Number . :'
+     A            CNPAYREF      16A  B 10 39 CHECK(MF)
+     A            CNMSG1        60A  O 12 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Confirm & Pay   F12=Back'
+     A
+     A* --------------------------------------------------------
+     A* PNR STATUS ENQUIRY SCREEN
+     A* --------------------------------------------------------
+     A          R PNRFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 30 'PNR STATUS ENQUIRY' DSPATR(HI)
+     A                                  3 10 'Enter PNR Number . . :'
+     A            PNPNRNO       10S 0B  3 36 CHECK(MF) EDTCDE(Z)
+     A                                  5 10 'Train  . . . . . . . :'
+     A            PNTRNAM       30A  O  5 36
+     A                                  6 10 'Route  . . . . . . . :'
+     A            PNSRCST       16A  O  6 36
+     A                                  6 53 'TO'
+     A            PNDSTST       16A  O  6 56
+     A                                  7 10 'Journey Date . . . . :'
+     A            PNJRNDAT       8S 0O  7 36 EDTCDE(Z)
+     A                                  8 10 'Passenger  . . . . . :'
+     A            PNPSGNAM      30A  O  8 36
+     A                                  9 10 'Age / Sex  . . . . . :'
+     A            PNPSGAGE       3S 0O  9 36 EDTCDE(Z)
+     A            PNPSGSEX       1A  O  9 41
+     A                                 10 10 'Quota / Berth / No.  :'
+     A            PNQUOTA        2A  O 10 36
+     A            PNBRTHTY       2A  O 10 40
+     A            PNBRTHNO       3S 0O 10 44 EDTCDE(Z)
+     A                                 11 10 'Fare Paid  . . . . . :'
+     A            PNFARAMT       7P 2O 11 36 EDTCDE(1)
+     A                                 12 10 'Booking Status . . . :'
+     A            PNBOKSTS       1A  O 12 36
+     A                                 13 10 'Refund Amount  . . . :'
+     A            PNREFAMT       7P 2O 13 36 EDTCDE(1)
+     A            PNMSG1        60A  O 15 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Lookup   F12=Back to Menu'
+     A
+     A* --------------------------------------------------------
+     A* TICKET CANCELLATION SCREEN
+     A* --------------------------------------------------------
+     A          R CANFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 30 'TICKET CANCELLATION' DSPATR(HI)
+     A                                  3 10 'Enter PNR Number . . :'
+     A            CXPNRNO       10S 0B  3 36 CHECK(MF) EDTCDE(Z)
+     A                                  5 10 'Train  . . . . . . . :'
+     A            CXTRNAM       30A  O  5 36
+     A                                  6 10 'Passenger  . . . . . :'
+     A            CXPSGNAM      30A  O  6 36
+     A                                  7 10 'Journey Date . . . . :'
+     A            CXJRNDAT       8S 0O  7 36 EDTCDE(Z)
+     A                                  8 10 'Quota  . . . . . . . :'
+     A            CXQUOTA        2A  O  8 36
+     A                                  9 10 'Fare Paid  . . . . . :'
+     A            CXFARAMT       7P 2O  9 36 EDTCDE(1)
+     A                                 10 10 'Current Status . . . :'
+     A            CXBOKSTS       1A  O 10 36
+     A                                 11 10 'Refund Amount  . . . :'
+     A            CXREFAMT       7P 2O 11 36 EDTCDE(1)
+     A            CXMSG1        60A  O 13 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Confirm Cancellation   F12=Back'
+     A
+     A* --------------------------------------------------------
+     A* ADMINISTRATOR MENU
+     A* --------------------------------------------------------
+     A          R ADMMNU                     CA03(03)
+     A                                       CA12(12)
+     A                                  1 30 'ADMINISTRATOR MENU' DSPATR(HI)
+     A                                  4 14 '1.  Add / Update Train (Train, Fare & Quota Management)'
+     A                                  5 14 '2.  Booking & Revenue Reports'
+     A                                  7 10 'Select Option  . . . :'
+     A            AMOPTION       1S 0B  7 36 CHECK(MF) RANGE(1 2) ERRMSG('ENTER A VALID OPTION NUMBER' 50)
+     A            AMMSG1        60A  O  9 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F12=Back to Main Menu'
+     A
+     A* --------------------------------------------------------
+     A* TRAIN / FARE / QUOTA MAINTENANCE SCREEN
+     A* --------------------------------------------------------
+     A          R ADMTRN                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 22 'TRAIN / FARE / QUOTA MAINTENANCE' DSPATR(HI)
+     A                                  3 10 'Train No (0 = new train) . :'
+     A            ATTRNNO        5S 0B  3 41 CHECK(MF) EDTCDE(Z)
+     A                                  4 10 'Train Name . . . . . . . . :'
+     A            ATTRNAM       30A  B  4 41 CHECK(MF)
+     A                                  5 10 'Source Station / Code  . . :'
+     A            ATSRCST       20A  B  5 41 CHECK(MF)
+     A            ATSRCCOD       4A  B  5 63 CHECK(MF)
+     A                                  6 10 'Dest. Station / Code . . . :'
+     A            ATDSTST       20A  B  6 41 CHECK(MF)
+     A            ATDSTCOD       4A  B  6 63 CHECK(MF)
+     A                                  7 10 'Departure / Arrival(HHMM) . :'
+     A            ATDEPTIM       4S 0B  7 41 CHECK(MF)
+     A            ATARRTIM       4S 0B  7 47 CHECK(MF)
+     A                                  8 10 'Running Days (Y/N x MTWTFSS):'
+     A            ATRUNDAY       7A  B  8 41 CHECK(MF)
+     A                                  9 10 'Total Seats  . . . . . . . :'
+     A            ATTOTSET       4S 0B  9 41 CHECK(MF)
+     A                                 10 10 'Gen / Ladies / Sr.Ctzn Seats:'
+     A            ATGENSET       4S 0B 10 41 CHECK(MF)
+     A            ATLADSET       4S 0B 10 47 CHECK(MF)
+     A            ATSCTSET       4S 0B 10 53 CHECK(MF)
+     A                                 11 10 'Base Fare  . . . . . . . . :'
+     A            ATFARE         7P 2B 11 41 CHECK(MF)
+     A                                 12 10 'Status (A=Active / I=Inactive):'
+     A            ATTRNSTS       1A  B 12 44 CHECK(MF) VALUES('A' 'I')
+     A            ATMSG1        60A  O 14 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Save   F12=Back to Admin Menu'
+     A
+     A* --------------------------------------------------------
+     A* BOOKING & REVENUE REPORTS SCREEN
+     A* --------------------------------------------------------
+     A          R RPTFMT                     CA03(03)
+     A                                       CA12(12)
+     A                                       CF10(10)
+     A                                  1 26 'BOOKING & REVENUE REPORTS' DSPATR(HI)
+     A                                  3 10 'Train No (0 = All Trains) . :'
+     A            RPTRNNO        5S 0B  3 41 EDTCDE(Z)
+     A                                  5 10 'Total Bookings . . . . . . :'
+     A            RPTOTBK        6S 0O  5 41 EDTCDE(Z)
+     A                                  6 10 'Active Bookings  . . . . . :'
+     A            RPACTBK        6S 0O  6 41 EDTCDE(Z)
+     A                                  7 10 'Cancelled Bookings . . . . :'
+     A            RPCANBK        6S 0O  7 41 EDTCDE(Z)
+     A                                  8 10 'Total Revenue Collected  . :'
+     A            RPTOTREV       9P 2O  8 41 EDTCDE(1)
+     A                                  9 10 'Total Refunds Paid . . . . :'
+     A            RPTOTREF       9P 2O  9 41 EDTCDE(1)
+     A                                 10 10 'Registered Users . . . . . :'
+     A            RPUSRCNT       6S 0O 10 41 EDTCDE(Z)
+     A            RPMSG1        60A  O 12 10 DSPATR(HI)
+     A                                 23 10 'F3=Exit   F10=Run Report   F12=Back to Admin Menu'

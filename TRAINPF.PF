@@ -1,0 +1,24 @@
+     A* ========================================================
+     A* TRAINPF - TRAIN MASTER PHYSICAL FILE
+     A* INDIAN RAILWAY RESERVATION SYSTEM (CASE STUDY)
+     A* KEY  : TRNNO (TRAIN NUMBER) - UNIQUE
+     A* ========================================================
+     A          R TRAINREC                  TEXT('TRAIN MASTER RECORD')
+     A            TRNNO          5S 0       COLHDG('TRAIN' 'NUMBER')
+     A            TRNNAM        30A         COLHDG('TRAIN' 'NAME')
+     A            SRCSTN        20A         COLHDG('SOURCE' 'STATION')
+     A            SRCCOD         4A         COLHDG('SOURCE' 'CODE')
+     A            DSTSTN        20A         COLHDG('DEST' 'STATION')
+     A            DSTCOD         4A         COLHDG('DEST' 'CODE')
+     A            DEPTIM         4S 0       COLHDG('DEP' 'TIME HHMM')
+     A            ARRTIM         4S 0       COLHDG('ARR' 'TIME HHMM')
+     A            RUNDAY         7A         COLHDG('RUN' 'DAYS MTWTFSS')
+     A            TOTSEAT        4S 0       COLHDG('TOTAL' 'SEATS')
+     A            AVLSEAT        4S 0       COLHDG('AVAIL' 'SEATS')
+     A            GENSEAT        4S 0       COLHDG('GEN' 'QUOTA AVAIL')
+     A            LADSEAT        4S 0       COLHDG('LADIES' 'QUOTA AVAIL')
+     A            SCTSEAT        4S 0       COLHDG('SR.CTZN' 'QUOTA AVAIL')
+     A            FARE           7P 2       COLHDG('BASE' 'FARE')
+     A            TRNSTS         1A         COLHDG('TRAIN' 'STATUS')
+     A                                      UNIQUE
+     A          K TRNNO

@@ -1,0 +1,17 @@
+     A* ========================================================
+     A* PAYPF - PAYMENT / TRANSACTION LEDGER PHYSICAL FILE
+     A* INDIAN RAILWAY RESERVATION SYSTEM (CASE STUDY)
+     A* KEY  : TXNNO (TRANSACTION NUMBER) - UNIQUE
+     A* ========================================================
+     A          R PAYREC                    TEXT('PAYMENT TRANSACTION RECORD')
+     A            TXNNO         12A         COLHDG('TXN' 'NUMBER')
+     A            PNRNO         10S 0       COLHDG('PNR' 'NUMBER')
+     A            USRID         10A         COLHDG('USER' 'ID')
+     A            AMOUNT         7P 2       COLHDG('TXN' 'AMOUNT')
+     A            PAYMOD         2A         COLHDG('PAYMENT' 'MODE')
+     A            PAYSTS         1A         COLHDG('PAYMENT' 'STATUS')
+     A            PAYDT          8S 0       COLHDG('PAYMENT' 'DATE')
+     A            PAYTM          6S 0       COLHDG('PAYMENT' 'TIME')
+     A            REFNO         16A         COLHDG('GATEWAY' 'REF NUMBER')
+     A                                      UNIQUE
+     A          K TXNNO

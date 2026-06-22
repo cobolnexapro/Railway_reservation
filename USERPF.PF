@@ -1,0 +1,19 @@
+     A* ========================================================
+     A* USERPF - USER / CUSTOMER MASTER PHYSICAL FILE
+     A* INDIAN RAILWAY RESERVATION SYSTEM (CASE STUDY)
+     A* KEY  : USRID (USER ID) - UNIQUE
+     A* ========================================================
+     A          R USERREC                   TEXT('USER MASTER RECORD')
+     A            USRID         10A         COLHDG('USER' 'ID')
+     A            USRPWD        10A         COLHDG('USER' 'PASSWORD')
+     A            USRNAM        30A         COLHDG('USER' 'NAME')
+     A            USRAGE         3S 0       COLHDG('USER' 'AGE')
+     A            USRSEX         1A         COLHDG('USER' 'SEX')
+     A            USREML        40A         COLHDG('EMAIL' 'ADDRESS')
+     A            USRPHN        12A         COLHDG('PHONE' 'NUMBER')
+     A            USRADR        60A         COLHDG('ADDRESS')
+     A            USRTYP         1A         COLHDG('USER' 'TYPE')
+     A            REGDT          8S 0       COLHDG('REGISTER' 'DATE')
+     A            USRSTS         1A         COLHDG('USER' 'STATUS')
+     A                                      UNIQUE
+     A          K USRID
